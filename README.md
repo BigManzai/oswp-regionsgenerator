@@ -10,3 +10,6 @@ Diese Plugin hat keine weiteren einstellmöglichkeiten.
 Bitte alle Daten ausfüllen sonst wird kein Konfiguratiosscript erstellt.
 
 Schreibrechte müssen gegebenfalls eingestellt werden.
+
+### TODO:
+Ausmisten, verkleinern.
