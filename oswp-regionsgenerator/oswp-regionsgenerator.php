@@ -14,7 +14,7 @@
  * Plugin Name:       oswp-regionsgenerator
  * Plugin URI:        https://github.com/BigManzai/oswp-regionsgenerator
  * Description:       OpenSim Regionsgenerator zum erstellen und Download einer OpenSim Regions Konfigurationsdatei. Bitte für jede Region eine einzelne erstellen, diese können dann einfach in das Regionsverzeichnis kopiert werden.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Manfred Aabye
  * Author URI:        http://openmanniland.de
  * Text Domain:       oswp-regionsgenerator
