@@ -11,6 +11,19 @@ Bitte alle Daten ausfüllen sonst wird kein Konfiguratiosscript erstellt.
 
 Schreibrechte müssen gegebenfalls eingestellt werden.
 
+### Install
+Die Plugin stellen ein Widget zur verfügung.
+
+Nach dem Aktivieren im Theme bereich steht ein Widget zur verfügung.
+
+The plugin provide a widget.
+
+After activating in the theme area a widget is available.
+
+Le plugin fournit un widget.
+
+Après activation dans la zone de thème, un widget est disponible.
+
 ### Lizens
 
 This program is distributed in the hope that it will be useful,
