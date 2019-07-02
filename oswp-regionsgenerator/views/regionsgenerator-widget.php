@@ -68,7 +68,7 @@
 		<input type="text" value="User" name="osMasterAvatarLastName" maxlength="40" /><br>
 	<?php echo esc_html__( 'Max Prims Pro Benutzer (Unbegrenzt = -1):', 'oswp-regionsgenerator' ) ; ?><br>
 		<input type="text" value="-1" name="osMaxPrimsPerUser" maxlength="40" /><br><br>
-	<button class="btn btn-danger" type="submit" name="submit" value="Download" >Download</button>
+	<button class="btn btn-danger" type="submit" name="submit" value="Download" >Weiter</button>
 	<button class="btn btn-danger" type="reset" >Zurücksetzen</button>
 </form>
 
