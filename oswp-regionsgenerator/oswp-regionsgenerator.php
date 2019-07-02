@@ -13,8 +13,8 @@
  * @wordpress-plugin
  * Plugin Name:       oswp-regionsgenerator
  * Plugin URI:        https://github.com/BigManzai/oswp-regionsgenerator
- * Description:       OpenSim Regionsgenerator zum erstellen und Download einer OpenSim Regions Konfigurationsdatei. Bitte für jede Region eine einzelne erstellen, diese können dann einfach in das Regionsverzeichnis kopiert werden.
- * Version:           1.0.1
+ * Description:       OpenSim Regionsgenerator zum erstellen und Download einer OpenSim Regions Konfigurationsdatei. Bitte für jede Region eine einzelne erstellen, diese können dann einfach in das Regionsverzeichnis kopiert werden, oder in eine bestehne Datei einfügen.
+ * Version:           1.1.2
  * Author:            Manfred Aabye
  * Author URI:        http://openmanniland.de
  * Text Domain:       oswp-regionsgenerator
@@ -29,6 +29,24 @@ if ( ! defined ( 'ABSPATH' ) ) {
 	exit;
 }
 
+//Load our translation files.
+	$wpterm_locale = array( 'de_DE' );
+	$this_locale = 'de_DE';
+	//$wpterm_locale = array( 'fr_FR' );
+	//$this_locale = 'fr_FR';
+	//$wpterm_locale = array( 'es_ES' );
+	//$this_locale = 'es_ES';
+	//$wpterm_locale = array( 'ru_RU' );
+	//$this_locale = 'ru_RU';
+
+
+//$this_locale = get_locale();
+if ( in_array( $this_locale, $wpterm_locale ) ) {
+	if ( file_exists( __DIR__ . "/lang/oswp-regionsgenerator-{$this_locale}.mo" ) ) {
+		unload_textdomain( 'oswp-regionsgenerator' );
+		load_textdomain( 'oswp-regionsgenerator', __DIR__ . "/lang/oswp-regionsgenerator-{$this_locale}.mo" );
+	}
+}
 // TODO: change 'oswp_regionsgenerator' to the name of your plugin
 class oswp_regionsgenerator extends WP_Widget {
 
@@ -42,7 +60,7 @@ class oswp_regionsgenerator extends WP_Widget {
      * of text. Its value should match the Text Domain file header in the main
      * widget file.
      *
-     * @since    1.0.0
+     * @since    1.1.2
      *
      * @var      string
      */
@@ -94,7 +112,7 @@ class oswp_regionsgenerator extends WP_Widget {
     /**
      * Return the widget slug.
      *
-     * @since    1.0.0
+     * @since    1.1.2
      *
      * @return    Plugin slug variable.
      */

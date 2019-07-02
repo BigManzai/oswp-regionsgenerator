@@ -1,129 +1,82 @@
 <!-- 
-	OpenSim Regions Generator V1.06 by Manfblack Aabye
-	Benötigte Dateien für OpenSim Regions Generator V1.06
-	w3.css
-	uuid.clas.php
+	# OpenSim Regions Generator V1.08 by Manfred Aabye
+	# Copyright (c) Manfred Aabye
+	#
+	# THIS SOFTWARE IS PROVIDED BY THE DEVELOPERS ``AS IS'' AND ANY
+	# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+	# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+	# DISCLAIMED. IN NO EVENT SHALL THE CONTRIBUTORS BE LIABLE FOR ANY
+	# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+	# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+	# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+	# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+	# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+	# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h2>Regionsgenerator</h2>
-
-<?php if (!isset($_POST['etape'])): ?>
-
-<form class="w3-container" action="" method="post">
-    <input type="hidden" name="etape" value="1" />
+<h1>Regionsgenerator</h1>
+<?php
+	// Standardwerte setzen
+	$osRegionsname = "Welcome";
+	$osLocationx = 5000;
+	$osLocationy = 5000;
+	$osInternalPort = 9050;
+	$osExternalHostName = "SYSTEMIP";
+	$osSize = 256;
+	$osDefaultLanding = "128,128,30";
+	$osNonPhysicalPrimMax = 1024;
+	$osMaxPrims = 15000;
+	$osMaxAgents = 40;
+	$osMasterAvatarFirstName = "Test";
+	$osMasterAvatarLastName = "User";
+	$osMaxPrimsPerUser = "-1";
 	
+	// Gettext einfügen
+	// Make theme available for translation
+	load_plugin_textdomain( 'oswp-regionsgenerator', false, basename( dirname( __FILE__ ) ) . '/lang' );
+?>
 
- 
-	<div class="form-group">
-    <label for="base" class="w3-label control-label">Regionsname:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="Welcome" name="osRegionsname" maxlength="40" />
-        </div>
-    </div>
- 
-	<div class="form-group">
-    <label for="base" class="w3-label control-label">Lokalisation X:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="1100" name="osLocationx" maxlength="40" />
-        </div>
-    </div>
+<!-- Werte abfragen -->
+<?php if (!isset($_POST['Regionsgenerator'])): ?>
 
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Lokalisation Y:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="1100" name="osLocationy" maxlength="40" />
-        </div>
-    </div>
+<form class="container" action="" method="post">
+    <input type="hidden" name="Regionsgenerator" value="1" />
 	
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Port:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="9100" name="osInternalPort" maxlength="40" />
-        </div>
-    </div>
- 
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Externe IP Adresse:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="SYSTEMIP" name="osExternalHostName" maxlength="40" />
-        </div>
-    </div>
-	
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Regionsgröße Meter:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="512" name="osSize" maxlength="40" />
-        </div>
-    </div>
- 
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Landepunkt x,y,z:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="128,128,30" name="osDefaultLanding" maxlength="40" />
-        </div>
-    </div>
-
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Prim Größe Meter:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="1024" name="osNonPhysicalPrimMax" maxlength="40" />
-        </div>
-    </div>
-
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Maximum an Prims:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="15000" name="osMaxPrims" maxlength="40" />
-        </div>
-    </div>
-
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Maximum Besucher:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="20" name="osMaxAgents" maxlength="40" />
-        </div>
-    </div> 
-
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Besitzer Vorname:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="Test" name="osMasterAvatarFirstName" maxlength="40" />
-        </div>
-    </div> 
- 
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Besitzer Nachname:</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="User" name="osMasterAvatarLastName" maxlength="40" />
-        </div>
-    </div> 
- 
- 	<div class="form-group">
-    <label for="base" class="w3-label control-label">Max Prims Pro Benutzer (Unbegrenzt = -1):</b></label>
-        <div class="w3-row">
-            <input class="w3-input w3-border" type="text" placeholder="-1" name="osMaxPrimsPerUser" maxlength="40" />
-        </div>
-    </div> 
-	
-<br>
-
-<!-- Install Button -->
-	
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button class="w3-btn-block w3-black" type="submit" name="submit" value="Installer">Download</button>
-        </div>
-    </div>
-
+	<?php echo esc_html__( 'Regionsname:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="Welcome" name="osRegionsname" maxlength="40" /><br>
+	<?php echo esc_html__( 'Lokalisation X:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="5000" name="osLocationx" maxlength="40" /><br>
+	<?php echo esc_html__( 'Lokalisation Y:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="5000" name="osLocationy" maxlength="40" /><br>
+	<?php echo esc_html__( 'Port:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="9050" name="osInternalPort" maxlength="40" /><br>
+	<?php echo esc_html__( 'Externe IP Adresse:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="SYSTEMIP" name="osExternalHostName" maxlength="40" /><br>
+	<?php echo esc_html__( 'Regionsgröße Meter:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="256" name="osSize" maxlength="40" /><br>
+	<?php echo esc_html__( 'Landepunkt x,y,z:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="128,128,30" name="osDefaultLanding" maxlength="40" /><br>
+	<?php echo esc_html__( 'Prim Größe Meter:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="1024" name="osNonPhysicalPrimMax" maxlength="40" /><br>
+	<?php echo esc_html__( 'Maximum an Prims:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="15000" name="osMaxPrims" maxlength="40" /><br>
+	<?php echo esc_html__( 'Maximum Besucher:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="40" name="osMaxAgents" maxlength="40" /><br>
+	<?php echo esc_html__( 'Besitzer Vorname:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="Test" name="osMasterAvatarFirstName" maxlength="40" /><br>
+	<?php echo esc_html__( 'Besitzer Nachname:', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="User" name="osMasterAvatarLastName" maxlength="40" /><br>
+	<?php echo esc_html__( 'Max Prims Pro Benutzer (Unbegrenzt = -1):', 'oswp-regionsgenerator' ) ; ?><br>
+		<input type="text" value="-1" name="osMaxPrimsPerUser" maxlength="40" /><br><br>
+	<button class="btn btn-danger" type="submit" name="submit" value="Download" >Download</button>
+	<button class="btn btn-danger" type="reset" >Zurücksetzen</button>
 </form>
 
 <?php endif ?>
+<!-- Werte abfragen Ende -->
 
 <!-- UUID Generator -->
 <?php
-
   function v4() 
   {
     return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -150,7 +103,6 @@
   
 // Pseudo-random UUID
 // $v4uuid = UUID::v4();
-
 ?>
 
 <!-- Datei löschen -->
@@ -161,47 +113,28 @@
 }
 ?>	
 
-<!-- Datei Download -->
 <?php
-function DownloadFile($file) { // $file = include path
-        if(file_exists($file)) {
-            header('Content-Description: File Transfer');
-            header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename='.basename($file));
-            header('Content-Transfer-Encoding: binary');
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($file));
-            ob_clean();
-            flush();
-            readfile($file);
-            exit;
-        }
-
-    }
-?>
-
-<?php
-if (isset($_POST['etape']) AND $_POST['etape'] == 1)
+if (isset($_POST['Regionsgenerator']) AND $_POST['Regionsgenerator'] == 1)
 {
     // eine Konstante erzeugen, die später verwendet wird
     define('RETOUR', '<input class="btn btn-primary" type="button" value="Return of form" onclick="history.back()">');
-
 	
 	$osRegionsname   = trim($_POST['osRegionsname']);
 	
     $datei = './' . $osRegionsname . '.ini';
+	$dir = './';
+	$type = 'application/ini';
 	$file = $osRegionsname . '.ini';
 	unlink($datei);
 
     if (file_exists($datei) AND filesize($datei ) > 0)
     {
         // wenn die Datei existiert und nicht leer ist, dann
-        exit('<div class="alert alert-danger">Datei Existiert oder ist nicht leer.</div>'. RETOUR);
+        exit('Datei Existiert oder ist nicht leer.'. RETOUR);
     }
 
-    // wir schaffen unsere Variablen und alle Leerzeichen beiläufig entfernen	
+    // wir schaffen unsere Variablen und alle Leerzeichen beiläufig entfernen
+	
 	$v4uuid = v4();
 	$osLocationx   = trim($_POST['osLocationx']);
 	$osLocationy   = trim($_POST['osLocationy']);
@@ -219,7 +152,8 @@ if (isset($_POST['etape']) AND $_POST['etape'] == 1)
     // der Text, der in der Regions.ini gesetzt wird
     $texte = '
 
-; Datei '.$osRegionsname.'.ini erstellt mit dem Regions Generator v1.0
+; Datei '.$osRegionsname.'.ini 
+; erstellt mit dem oswp Regions Generator v1.2
 
 ['.$osRegionsname.']
 
@@ -251,7 +185,7 @@ MasterAvatarLastName = '.$osMasterAvatarLastName.'
 ; Ende '.$osRegionsname.'.ini
 
    ';
-   
+
  // ini Datei schreiben 
    
     if (!$offen = fopen($datei, 'w'))
@@ -261,27 +195,29 @@ MasterAvatarLastName = '.$osMasterAvatarLastName.'
 
     if (fwrite($offen, $texte) == FALSE)
     {
-        exit('<div class="alert alert-danger">Can not write to the file : <strong>'. $datei .'</strong>, Dateifehler (' . $osRegionsname . '.ini) Verzeichnis nicht beschreibbar.</div>'. RETOUR);
+        exit('<div class="alert alert-danger">Kann Datei nicht schreiben. : <strong>'. $datei .'</strong>, Dateifehler (' . $osRegionsname . '.ini) Verzeichnis nicht beschreibbar.</div>'. RETOUR);
     }
 
-    echo '<div class="alert alert-success">Creation of effected regions file with success ...</div>';
+    //echo '<div class="alert alert-success">Datei erstellt.</div>';
     fclose($offen);
 
-    echo '<div class="alert alert-success">Installing the ' . $osRegionsname . '.ini of data effected with success...</div>';
+    echo '<div class="alert alert-success">Kopieren sie die Datei ' . $osRegionsname . '.ini in ihr Regionsverzeichnis, oder fügen sie es so in einer bestehenden Datei ein.</div>';
+	?>
+	
+	<iframe src='<?php echo $datei; ?>' height="560"></iframe> 
+	<h1><a href= '<?php echo $datei; ?>' download> Kopieren </a></h1>
+	
+	<?php
 
     echo '<form class="form-group" action="" method="post">';
     echo '<input type="hidden" name="delete" value="1" />';
     echo '<div class="form-group">';
-    echo '<button class="btn btn-danger" type="submit" name="submit" >Delete file Regions.ini</button>';
+    echo '<button class="btn btn-danger" type="submit" name="submit" >Zurück</button>';
+
     echo '</div>';
     echo '</form>';
-	
-// Datei Download
-DownloadFile($file);
 
 // Datei löschen
-    unlink($datei);
-	
+    //unlink($datei);
 }
-
 ?>
