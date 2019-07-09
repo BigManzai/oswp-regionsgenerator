@@ -216,7 +216,7 @@ class oswp_regionsgenerator extends WP_Widget {
 
 		// Display the admin form
 		// Das Admin-Formular anzeigen
-		include( plugin_dir_path(__FILE__) . 'views/regionsgenerator-admin.php' );
+		//include( plugin_dir_path(__FILE__) . 'views/regionsgenerator-admin.php' );
 
 	} // end form
 
